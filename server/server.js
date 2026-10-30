@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const fs = require('fs');
 const { testConnection } = require('./db');
 const { addUserToLocals } = require('./middleware/auth');
 
@@ -36,20 +37,57 @@ app.use(session({
 // Make user data available on every request
 app.use(addUserToLocals);
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
 // --- Routes ---
+
+// Helper to serve HTML with server-side rendered navigation
+function sendPage(req, res, filename) {
+  const filePath = path.join(__dirname, '..', 'public', filename);
+  fs.readFile(filePath, 'utf8', (err, html) => {
+    if (err) return res.status(500).send('Error loading page');
+
+    const isLoggedIn = !!(req.session && req.session.userId);
+    const navItems = isLoggedIn
+      ? `<li><a href="/index.html">Browse Skills</a></li>
+          <li><a href="/dashboard.html">My Dashboard</a></li>
+          <li><a href="#" id="logout-btn">Logout</a></li>`
+      : `<li><a href="/index.html">Browse Skills</a></li>
+          <li><a href="/login.html">Login / Register</a></li>`;
+
+    const rendered = html.replace(
+      /<ul id="nav-list">[\s\S]*?<\/ul>/,
+      `<ul id="nav-list">\n          ${navItems}\n        </ul>`
+    );
+
+    res.send(rendered);
+  });
+}
+
+// Page routes (rendered with authentic server session state)
+app.get(['/', '/index.html'], (req, res) => {
+  sendPage(req, res, 'index.html');
+});
+
+app.get('/dashboard.html', (req, res) => {
+  if (!req.session || !req.session.userId) {
+    return res.redirect('/login.html');
+  }
+  sendPage(req, res, 'dashboard.html');
+});
+
+app.get('/login.html', (req, res) => {
+  if (req.session && req.session.userId) {
+    return res.redirect('/dashboard.html');
+  }
+  sendPage(req, res, 'login.html');
+});
+
+// Serve static assets (CSS, JS, images)
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Mount API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/interests', interestRoutes);
-
-// Default route — serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-});
 
 // --- Error Handler ---
 

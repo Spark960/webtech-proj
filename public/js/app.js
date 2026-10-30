@@ -2,34 +2,27 @@
 let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Check auth status
+  // Attach logout listener if present on page
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.onclick = async (e) => {
+      e.preventDefault();
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/login.html';
+    };
+  }
+
+  // Check current session to identify user for interactive features
   try {
     const res = await fetch('/api/auth/me');
     if (res.ok) {
       const data = await res.json();
-      if (data.success) currentUser = data.data;
+      if (data.success && data.data) {
+        currentUser = data.data;
+      }
     }
   } catch (e) {
     currentUser = null;
-  }
-
-  // Update navbar links
-  const loginNav = document.getElementById('nav-login-link');
-  const dashNav = document.getElementById('nav-dash-link');
-  const logoutNav = document.getElementById('nav-logout-link');
-
-  if (currentUser) {
-    if (loginNav) loginNav.hidden = true;
-    if (dashNav) dashNav.hidden = false;
-    if (logoutNav) logoutNav.hidden = false;
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-      logoutBtn.onclick = async (e) => {
-        e.preventDefault();
-        await fetch('/api/auth/logout', { method: 'POST' });
-        window.location.href = '/login.html';
-      };
-    }
   }
 
   // Page 1: Browse Skills
@@ -143,6 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         const d = await res.json();
         if (res.ok && d.success) {
+          sessionStorage.setItem('isLoggedIn', 'true');
           window.location.href = '/dashboard.html';
         } else {
           loginErr.textContent = d.message || 'Login failed.';

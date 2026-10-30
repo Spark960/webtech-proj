@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+/* Ensure hidden elements are completely removed from visual and accessibility trees */
+[hidden] {
+  display: none !important;
+}
+
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;

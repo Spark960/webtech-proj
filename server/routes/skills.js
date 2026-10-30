@@ -9,7 +9,6 @@ router.post('/', requireAuth, async (req, res) => {
   try {
     const { type, title, description, category } = req.body;
 
-    // Validate required fields
     if (!type || !title) {
       return res.status(400).json({
         success: false,
@@ -42,7 +41,6 @@ router.post('/', requireAuth, async (req, res) => {
 });
 
 // GET /api/skills/mine — Get current user's skill cards
-// IMPORTANT: This must be defined BEFORE /:id so Express doesn't match "mine" as an id
 router.get('/mine', requireAuth, async (req, res) => {
   try {
     const [skills] = await pool.query(
