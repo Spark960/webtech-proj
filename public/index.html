@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Student Skill Exchange</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="nav-container">
+      <h1><a href="./index.html">SkillSwap</a></h1>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="./index.html">Browse Skills</a></li>
+          <li id="nav-login-link"><a href="./login.html">Login / Register</a></li>
+          <li id="nav-dash-link" hidden><a href="./dashboard.html">My Dashboard</a></li>
+          <li id="nav-logout-link" hidden><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section aria-labelledby="browse-heading">
+      <h2 id="browse-heading">Browse Student Skills</h2>
+      <p>Connect with peers on campus to teach what you know and learn what you want.</p>
+
+      <!-- Search & Filters -->
+      <div class="filter-box" role="search">
+        <div class="form-group">
+          <label for="search-box">Search keywords</label>
+          <input type="text" id="search-box" placeholder="e.g. Python, Guitar, Spanish">
+        </div>
+
+        <div class="form-group">
+          <label for="category-select">Category</label>
+          <select id="category-select">
+            <option value="">All Categories</option>
+            <option value="Coding">Coding</option>
+            <option value="Music">Music</option>
+            <option value="Language">Language</option>
+            <option value="Sports">Sports</option>
+            <option value="Art">Art</option>
+            <option value="Academic">Academic</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="type-select">Type</label>
+          <select id="type-select">
+            <option value="">All Types</option>
+            <option value="teach">Can Teach</option>
+            <option value="learn">Wants to Learn</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Live Results Area -->
+      <div id="skills-container" class="skills-list" aria-live="polite">
+        <p>Loading skills...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SkillSwap. A peer learning platform.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

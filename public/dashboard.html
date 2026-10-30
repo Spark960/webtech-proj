@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - SkillSwap</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="nav-container">
+      <h1><a href="./index.html">SkillSwap</a></h1>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="./index.html">Browse Skills</a></li>
+          <li id="nav-login-link"><a href="./login.html">Login / Register</a></li>
+          <li id="nav-dash-link" hidden><a href="./dashboard.html">My Dashboard</a></li>
+          <li id="nav-logout-link" hidden><a href="#" id="logout-btn">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div id="dash-status-msg" class="alert-success" role="status" hidden></div>
+
+    <!-- Section 1: Post a skill -->
+    <section aria-labelledby="post-heading">
+      <h2 id="post-heading">Post a Skill</h2>
+      <div id="skill-form-error" class="alert-error" role="alert" hidden></div>
+
+      <form id="post-skill-form">
+        <fieldset>
+          <legend>Skill Goal <span class="error-text">(required)</span></legend>
+          <div class="radio-group">
+            <input type="radio" id="type-teach" name="type" value="teach" required checked>
+            <label for="type-teach">I can teach this</label>
+
+            <input type="radio" id="type-learn" name="type" value="learn">
+            <label for="type-learn">I want to learn this</label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="skill-title">Skill Title <span class="error-text">(required)</span></label>
+          <input type="text" id="skill-title" name="title" required placeholder="e.g. Data Structures in C++">
+          <p id="skill-title-err" class="error-text" role="alert"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="skill-category">Category</label>
+          <select id="skill-category" name="category">
+            <option value="Coding">Coding</option>
+            <option value="Music">Music</option>
+            <option value="Language">Language</option>
+            <option value="Sports">Sports</option>
+            <option value="Art">Art</option>
+            <option value="Academic">Academic</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="skill-description">Description</label>
+          <textarea id="skill-description" name="description" rows="3" placeholder="Briefly describe what you know or want to practice"></textarea>
+        </div>
+
+        <button type="submit">Publish Skill</button>
+      </form>
+    </section>
+
+    <!-- Section 2: My Skills List -->
+    <section aria-labelledby="myskills-heading">
+      <h2 id="myskills-heading">My Posted Skills</h2>
+      <div id="my-skills-container" class="skills-list" aria-live="polite">
+        <p>Loading your skills...</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Incoming Interests -->
+    <section aria-labelledby="incoming-heading">
+      <h2 id="incoming-heading">Incoming Requests on My Skills</h2>
+      <div id="incoming-container" class="skills-list" aria-live="polite">
+        <p>Loading requests...</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Outgoing Interests -->
+    <section aria-labelledby="outgoing-heading">
+      <h2 id="outgoing-heading">My Outgoing Requests</h2>
+      <div id="outgoing-container" class="skills-list" aria-live="polite">
+        <p>Loading requests...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SkillSwap. A peer learning platform.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "skillswap",
+  "version": "1.0.0",
+  "description": "Peer skill exchange platform for students",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "keywords": ["skillswap", "exchange", "students"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.5"
+  }
+}

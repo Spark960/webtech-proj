@@ -1,0 +1,258 @@
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222222;
+  background-color: #f7f9fa;
+  padding: 0;
+}
+
+/* Skip navigation link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #004085;
+  color: #ffffff;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 10px;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #004085;
+  color: #ffffff;
+  padding: 15px 20px;
+}
+
+header .nav-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+header a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: underline;
+}
+nav a:hover, nav a:focus {
+  color: #ffd700;
+}
+
+/* Main Container */
+main {
+  max-width: 960px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #111111;
+  margin-bottom: 12px;
+}
+h2 {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* Forms */
+form {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 16px;
+  border: 1px solid #767676;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+/* Radio buttons & inline labels */
+.radio-group label {
+  display: inline;
+  font-weight: normal;
+  margin-right: 15px;
+}
+
+fieldset {
+  border: 1px solid #cccccc;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/* Buttons */
+button, .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #0056b3;
+  color: #ffffff;
+  border: 1px solid #004085;
+  border-radius: 4px;
+  text-decoration: none;
+}
+button:hover, .btn:hover {
+  background-color: #003d80;
+}
+button:focus, a:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  background-color: #495057;
+  border-color: #343a40;
+}
+.btn-secondary:hover {
+  background-color: #343a40;
+}
+.btn-danger {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.btn-danger:hover {
+  background-color: #bd2130;
+}
+
+/* Messages & Alerts */
+.error-text {
+  color: #a71d2a;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+/* Skill Cards / List */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.skill-card {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.skill-card .meta {
+  font-size: 0.9rem;
+  color: #555555;
+  margin-bottom: 6px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 0.85rem;
+  border: 1px solid #666;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+/* Filter bar */
+.filter-box {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.filter-box .form-group {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #555555;
+  font-size: 0.9rem;
+  border-top: 1px solid #dddddd;
+  margin-top: 40px;
+}
